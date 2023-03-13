@@ -1,6 +1,6 @@
 import styles from './MeetupList.module.css';
-import MeetupItem from './MeetupItem';
-import {Meetup} from '../../types/Meetup';
+import MeetupItem from '../meetupItem/MeetupItem';
+import {Meetup} from '../../../types/Meetup';
 
 interface MeetupListProps {
   meetups: Meetup[]

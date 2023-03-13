@@ -1,7 +1,10 @@
+import MewMeetupForm from '../components/meetups/newMeetupForm/NewMeetupForm';
+
 export default function NewMeetupPage() {
   return (
-    <div>
-      New Meetup Page
-    </div>
+    <section>
+      <h1>Add New Meetup</h1>
+      <MewMeetupForm/>
+    </section>
   );
 }

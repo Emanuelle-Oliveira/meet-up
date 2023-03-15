@@ -7,31 +7,42 @@ import React from 'react';
 import {useRef} from 'react';
 import {Meetup} from '../../../types/Meetup';
 
-export default function MewMeetupForm() {
+interface  NewMeetupFormProps {
+  onAddMeetup: (meetupData: Meetup) => void;
+}
+
+export default function NewMeetupForm(props: NewMeetupFormProps) {
 
   const titleInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
   const descriptionInputRef = useRef<HTMLTextAreaElement>(null);
 
-
   function submitHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     // Pega o valor atual do input title
-    const enteredTitle = titleInputRef.current?.value;
-    const enteredImage = imageInputRef.current?.value;
-    const enteredAddress = addressInputRef.current?.value;
-    const enteredDescription = descriptionInputRef.current?.value;
+    const enteredTitle = titleInputRef.current ? titleInputRef.current.value : 'Title';
+    /*
+    let enteredTitle;
+    if (titleInputRef.current == null)
+      enteredTitle = 'Title';
+    else
+      enteredTitle = titleInputRef.current.value;
+     */
+    const enteredImage = imageInputRef.current ? imageInputRef.current.value : 'Image';
+    const enteredAddress = addressInputRef.current ? addressInputRef.current.value : 'Address';
+    const enteredDescription = descriptionInputRef.current ? descriptionInputRef.current.value : 'Description';
 
-    const meetupData = {
+    const meetupData: Meetup = {
       title: enteredTitle,
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription
     };
 
-    console.log(meetupData);
+    // Função passada por prop pelo componente pai "New Meetup"
+    props.onAddMeetup(meetupData);
   }
 
   return (

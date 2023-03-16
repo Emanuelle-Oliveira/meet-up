@@ -2,7 +2,7 @@ import styles from './MeetupItem.module.css';
 import Card from '../../ui/card/Card';
 
 interface MeetupItemProps {
-  //id: string
+  id?: string
   image: string
   title: string
   address: string
